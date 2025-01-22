@@ -1,0 +1,31 @@
+<div class="container h-screen w-full flex" style="background: #1E1E1E;">
+    <div class="editor-container flex flex-col h-full w-full">
+        <!-- TOP BAR -->
+        <div class="action-bar flex justify-between px-5 py-2 my-3 mx-4 rounded-md bg-gray-950" style="border: 1px solid rgb(82, 81, 81);">
+            <div class="logo">
+                <img src="../../../../assets/just-code-e.png" height="30" width="30" alt="logo">
+            </div>
+            <div class="actions flex">
+                <fa-icon [icon]="faPlay" (click)="runCode()" class="pr-16 hover:cursor-pointer" style="color: white; font-size: 20px;"></fa-icon>
+                <div class="languages bg-transparent">
+                    <select name="language" id="language" class="bg-transparent text-slate-300 rounded-md" 
+                            style="border: 1px solid rgb(160, 160, 160);padding: 2px;"
+                            [(ngModel)]="selectedLanguage"
+                            (change)="onLanguageChange($event)"
+                            >
+                        <option *ngFor="let language of languages" [value]="language" class="bg-gray-950">{{ language }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- EDITOR -->
+        <div class="editor flex-1 w-full" [style.height.px]="editorHeight"></div>
+        <div id="resizer"
+            class="h-1 cursor-row-resize hover:cursor-row-resize"
+            style="background: rgb(111, 111, 111);"
+            (mousedown)="startResizing($event)">
+        </div>
+        <!-- OUTPUT WINDOW -->
+        <app-output [height]="outputHeight" [output]="output" [codeExecSuccess]="codeExecSuccess"/>
+    </div>
+</div>
