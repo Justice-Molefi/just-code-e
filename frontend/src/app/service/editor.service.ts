@@ -13,6 +13,6 @@ export class EditorService {
   constructor(private http: HttpClient) { }
 
   execute(codeRquest: CodeRequest): Observable<CodeExecutionResponse>{
-    return this.http.post<CodeExecutionResponse>(`${this.baseUrl}/execute`, codeRquest);
+    return this.http.post<CodeExecutionResponse>(`${this.baseUrl}/execution-service`, codeRquest);
   }
 }
